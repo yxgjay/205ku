@@ -28,7 +28,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let UA = $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1")
-let shareId = 'KMnydTyM9ezAduo1QsTZZsAdoUJQ3Dik'
+let shareId = ''
 $.shareCodes = [];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -47,9 +47,9 @@ if ($.isNode()) {
   if (process.env.PIGPETSHARECODE) {
     shareId = process.env.PIGPETSHARECODE
   } else{
-    let res = await getAuthorShareCode('https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/pigPet.json')
+    let res = await getAuthorShareCode('https://127.0.0.1/zero205/updateTeam/main/shareCodes/pigPet.json')
     if (!res) {
-      res = await getAuthorShareCode('https://raw.fastgit.org/zero205/updateTeam/main/shareCodes/pigPet.json')
+      res = await getAuthorShareCode('https://127.0.0.1/zero205/updateTeam/main/shareCodes/pigPet.json')
     }
     if (res){
       shareId = res[Math.floor((Math.random() * res.length))];
